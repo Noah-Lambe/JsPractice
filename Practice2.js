@@ -1,7 +1,8 @@
 // 1
-let areaC = (r) => Math.PI * r * r;
-let y = areaC(3);
-console.log(y);
+function area(radius) {
+    return Math.PI * radius * radius;
+}
+console.log(area(5))
 
 // 2
 function roll(sides = 6)
