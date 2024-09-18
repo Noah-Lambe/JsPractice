@@ -144,4 +144,4 @@ function calculateTime1(seconds) {
     
     console.log(`${days} ${daysUnits}, ${hours} ${hoursUnits}, ${minutes} ${minutesUnits}`);
 }
-calculateTime1(2512345);
+calculateTime1(112345);
