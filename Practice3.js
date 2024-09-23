@@ -17,7 +17,7 @@ function getExtension(fileName) {
     let ext = fileName.split('.').pop();
     return ext;
 }
-console.log(getExtension('example.txt'));
+console.log(getExtension('exampleFile.js'));
 
 // 4
 function getDate() {
@@ -49,7 +49,7 @@ function checkPeriod(string) {
     return msg;
 
 }
-console.log(checkPeriod("example.com"));
+console.log(checkPeriod("lookingForPunctuation.com"));
 
 // 7
 // function putSuffix(num1) {
@@ -80,17 +80,6 @@ function putSuffix(num1) {
             suffix = "th";
             break;
     }
-
-    // if (num1 == 11) {
-    //         suffix = "th";
-    //     }
-    //     else if (num1 == 12) {
-    //         suffix = "th";
-    //     }
-    //     else if (num1 == 13) {
-    //         suffix = "th";
-        
-    // }
 
     if (numStr.charAt(numStr.length - 2) == 1 && numStr.charAt(numStr.length - 2) == 1) {
         suffix = "th";
