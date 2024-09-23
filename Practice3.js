@@ -93,7 +93,6 @@ function putSuffix(num1) {
 
     return numStr + suffix;
 }
-
 console.log(putSuffix(11));
 console.log(putSuffix(891));
 console.log(putSuffix(912));
