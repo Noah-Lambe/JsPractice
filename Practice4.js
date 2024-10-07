@@ -53,20 +53,16 @@ function fixPostalCode(postalCode) {
   const postalCodeRegex =
     /^[ABCEGHJKLMNPRSTVXY][0-9][ABCEGHJKLMNPRSTVWXYZ][ -]?[0-9][ABCEGHJKLMNPRSTVWXYZ][0-9]$/;
 
-  // Remove leading/trailing whitespace and convert everything to upper case
   let fixed = postalCode.trim().toUpperCase();
 
-  // Make sure the characters are valid
   if (!postalCodeRegex.test(postalCode)) {
     throw new Error(`Invalid postal code: ${postalCode}`);
   }
 
-  // If the postal code is only 6 characters, insert a space in the middle
   if (fixed.length === 6) {
     fixed = `${fixed.slice(0, 3)} ${fixed.slice(3)}`;
   }
 
-  // Replace a `-` with a ` ` if necessary
   if (fixed.length === 7) {
     fixed = fixed.replace("-", " ");
   }
@@ -74,7 +70,7 @@ function fixPostalCode(postalCode) {
   return fixed;
 }
 
-console.log(fixPostalCode("A1A 1A1"));
+console.log(fixPostalCode("A1A-1A1"));
 // console.log(fixPostalCode("a1a 1a1"));
 // console.log(fixPostalCode("A1A1A1"));
 // console.log(fixPostalCode("A1A"));
