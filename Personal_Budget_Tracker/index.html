@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
+      integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Personal Budget Tracker</h1>
+      <div>Current balance:</div>
+      </br>
+      <form id="form1">
+        <!-- <label for="description">Description:</label> -->
+        <input 
+          type="text"
+          id="description"
+          name="description"
+          placeholder="Description"
+        ></input>
+        <input 
+          type="text"
+          id="amount"
+          name="amount"
+          placeholder="Amount"
+        ></input>
+        <select id="type" name="type">
+          <option value="expense">Expense</option>
+          <option value="deposit">Deposit</option>
+        </select>
+          <input
+            type="submit"
+            value="Add transaction"
+          ></input>
+      </form>
+      <div id="alerts"></div>
+      <table id="area">
+        <th><h3>Transactions</h3></th>
+        <tbody id="list"></tbody>
+      </table>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
