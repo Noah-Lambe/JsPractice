@@ -3,23 +3,23 @@ window.addEventListener("DOMContentLoaded", function () {
     constructor(description, amount, options) {
       this.id = Date.now();
       this.description = description;
-      this.amount = parseFloat(amount); // Convert amount to a float
+      this.amount = parseFloat(amount);
       this.options = options;
     }
 
     addTransactionToList(transaction) {
       if (
         transaction.description === "" ||
-        isNaN(transaction.amount) || // Check if amount is a valid number
+        transaction.amount === "" ||
         transaction.options === ""
       ) {
-        this.showAlert("Please fill in all fields with valid data", "error");
+        this.showAlert("No field should be empty", "error");
       } else {
         let tr = document.createElement("tr");
         tr.setAttribute("data-id", transaction.id);
         tr.innerHTML = `
             <td>${transaction.description}</td>
-            <td>${transaction.amount.toFixed(2)}</td>
+            <td>${transaction.amount}</td>
             <td>${transaction.options}</td>
             <td><button class="delete">Delete</button></td>`;
 
@@ -51,9 +51,8 @@ window.addEventListener("DOMContentLoaded", function () {
         const transactionRow = elemToDelete.parentElement.parentElement;
         const transactionId = transactionRow.getAttribute("data-id");
         transactionRow.remove();
-        Store.removeTransaction(transactionId);
+        Store.removeTransaction(transactionId); // Use the ID to remove from storage
         this.showAlert("Transaction successfully deleted", "success");
-        Store.calculateBalance(); // Update balance immediately after deletion
       } else {
         this.showAlert("Wrong area clicked! Click on Delete", "error");
       }
@@ -100,9 +99,9 @@ window.addEventListener("DOMContentLoaded", function () {
 
       transactions.forEach((transaction) => {
         if (transaction.options === "deposit") {
-          balance += isNaN(transaction.amount) ? 0 : transaction.amount; // Handle NaN case
+          balance += transaction.amount;
         } else if (transaction.options === "expense") {
-          balance -= isNaN(transaction.amount) ? 0 : transaction.amount; // Handle NaN case
+          balance -= transaction.amount;
         }
       });
 
@@ -115,23 +114,17 @@ window.addEventListener("DOMContentLoaded", function () {
 
   let form = document.querySelector("#form1");
   form.addEventListener("submit", function (e) {
-    e.preventDefault(); // Prevent form submission
-
     let description = document.querySelector("#description").value;
     let amount = document.querySelector("#amount").value;
     let options = document.querySelector("#type").value;
-
-    if (isNaN(parseFloat(amount))) {
-      alert("Please enter a valid number for the amount.");
-      return;
-    }
 
     let transaction = new Transaction(description, amount, options);
 
     transaction.addTransactionToList(transaction);
     Store.addTransaction(transaction);
-    Store.calculateBalance(); // Update balance immediately after adding
     transaction.showAlert("Transaction successfully added", "success");
+
+    e.preventDefault();
   });
 
   document.querySelector("#area").addEventListener("click", function (evt) {
@@ -142,7 +135,6 @@ window.addEventListener("DOMContentLoaded", function () {
     evt.preventDefault();
   });
 
-  // Display existing transactions and calculate the initial balance when page loads
   Store.displayTransactions();
   Store.calculateBalance();
 });
