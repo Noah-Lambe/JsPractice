@@ -1,0 +1,22 @@
+{
+  "events": [
+    {
+      "id": "1",
+      "title": "Communication Workshop",
+      "date": "2025-01-01",
+      "time": "11:00 AM",
+      "description": "An introductory workshop on Communication.",
+      "organizer": "Alan Turing",
+      "location": "Conference Room Hall B"
+    },
+    {
+      "id": "2",
+      "title": "Codionics",
+      "date": "2025-03-15",
+      "time": "9:00 AM",
+      "description": "A 24-hour coding event.",
+      "organizer": "James Paul",
+      "location": "Main Auditorium Hall C"
+    }
+  ]
+}
